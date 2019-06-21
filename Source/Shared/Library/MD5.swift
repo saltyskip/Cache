@@ -106,8 +106,10 @@ func rstr_md5(_ input: [CUnsignedChar]) -> [CUnsignedChar] {
 * Add integers, wrapping at 2^32.
 * to work around bugs in some JS interpreters.
 */
-func safe_add(_ x: Int32, _ y: Int32) -> Int32 {    func safe_add(_ x: Int32, _ y: Int32) -> Int32 {
-    let lsw = (x & 0xFFFF) + (y & 0xFFFF)      return x &+ y
+func safe_add(_ x: Int32, _ y: Int32) -> Int32 {
+  let lsw = (x & 0xFFFF) + (y & 0xFFFF)
+  return x &+ y
+}
 
 /*
  * Bitwise rotate a 32-bit number to the left.
